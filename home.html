@@ -4,15 +4,15 @@
 		<link rel="stylesheet" href=" bootstrap/css/bootstrap.css">
 	</head>
 	<body>
-		<div class="panel panel-default" style="text-align:center;margin:20px;background-color:#F8F8F8">
+		<div class="container panel panel-default" style="text-align:center;margin:20px;background-color:#F8F8F8">
 			<!-- geolocation logic taken from http://www.w3schools.com/html/html5_geolocation.asp -->
 			<br/>
 			<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
 			<br/><br/><br/>
-			<div class="input-group input-group-lg" style="margin:auto">
-				<input type="text" name="enter" class="form-control" style="text-align:center" value="" id="textBox" placeholder="Length of trip in miles"/>
-				<br /><br /><br/><br/>
-				<button class="btn btn-info btn-lg" onclick="getLocation()">Calculate Route</button>
+			<div class="input-group input-group-lg col-xs-12" style="margin:auto">
+				<input type="text" name="enter" class="form-control" style="text-align:center;height:90px" value="" id="textBox" placeholder="Length of trip in miles"/>
+				<br /><br /><br/><br/><br/><br/>
+				<button class="btn btn-info btn-lg col-xs-12" onclick="getLocation()">Calculate Route</button>
 			</div>
 			<br/>
 			<p id="demo"></p>
