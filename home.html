@@ -19,7 +19,7 @@ function Point(lat, lon) {
 	this.lon = lon;
 }
 
-// takes seven Point objects
+// takes eight Point objects that represent stops/nodes on the Route
 function Route(one, two, three, four, five, six, seven, eight) {
 	this.one = one;
 	this.two = two;
@@ -59,14 +59,14 @@ function calculatePoints(position) {
 function composeLink(route) {
 	var link = "http://www.google.com/maps/dir/";
 	link = link + route.one.lat + "," + route.one.lon + "/";
-	link = link + + route.two.lat + "," + route.two.lon + "/";
-	link = link + + route.three.lat + "," + route.three.lon + "/";
-	link = link + + route.four.lat + "," + route.four.lon + "/";
-	link = link + + route.five.lat + "," + route.five.lon + "/";
-	link = link + + route.six.lat + "," + route.six.lon + "/";
-	link = link + + route.seven.lat + "," + route.seven.lon + "/";
-	link = link + + route.eight.lat + "," + route.eight.lon + "/";
-	llink = link + + route.one.lat + "," + route.one.lon;
+	link = link + route.two.lat + "," + route.two.lon + "/";
+	link = link + route.three.lat + "," + route.three.lon + "/";
+	link = link + route.four.lat + "," + route.four.lon + "/";
+	link = link + route.five.lat + "," + route.five.lon + "/";
+	link = link + route.six.lat + "," + route.six.lon + "/";
+	link = link + route.seven.lat + "," + route.seven.lon + "/";
+	link = link + route.eight.lat + "," + route.eight.lon + "/";
+	link = link + route.one.lat + "," + route.one.lon;
 	return link;
 }
 
