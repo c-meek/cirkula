@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<link rel="stylesheet" href="bootstrap.css">
+</head>
 <body>
-
+<div class="panel" style="text-align:center">
 <!-- geolocation logic taken from http://www.w3schools.com/html/html5_geolocation.asp -->
 <p>Enter the length (in miles) of your trip, then click the button to get your coordinates</p>
 
 <input type="text" name="enter" class="enter" value="" id="textBox"/>
-<button onclick="getLocation()">Calculate Route</button>
-
+<br /><br />
+<button class="btn btn-info" onclick="getLocation()">Calculate Route</button>
+<br/>
 <p id="demo"></p>
-
+</div>
 <script>
 var x = document.getElementById("demo");
 
@@ -51,7 +55,8 @@ function calculatePoints(position) {
 	var seven = new Point(one.lat + radius, one.lon - radius);
 	var eight = new Point(one.lat + 0.08*radius, one.lon - 0.38*radius);
 	var link = composeLink(new Route(one, two, three, four, five, six, seven, eight));
-    x.innerHTML = "<a href=" + link + ">Start Trip</a>";	
+	window.location=link;
+   <!-- x.innerHTML = "<a href=" + link + ">Start Trip</a>";	-->
 }
 
 
