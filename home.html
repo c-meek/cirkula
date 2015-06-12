@@ -1,86 +1,89 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<link rel="stylesheet" href="bootstrap.css">
-</head>
-<body>
-<div class="panel" style="text-align:center">
-<!-- geolocation logic taken from http://www.w3schools.com/html/html5_geolocation.asp -->
-<p>Enter the length (in miles) of your trip, then click the button to get your coordinates</p>
+	<head>
+		<link rel="stylesheet" href=" bootstrap/css/bootstrap.css">
+	</head>
+	<body>
+		<div class="panel panel-default" style="text-align:center;padding:30px;margin:15px">
+			<!-- geolocation logic taken from http://www.w3schools.com/html/html5_geolocation.asp -->
+			<br/>
+			<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+			<br/><br/>
+			<p>Enter the length (in miles) of your trip, then click the button to get your coordinates</p>
 
-<input type="text" name="enter" class="enter" value="" id="textBox"/>
-<br /><br />
-<button class="btn btn-info" onclick="getLocation()">Calculate Route</button>
-<br/>
-<p id="demo"></p>
-</div>
-<script>
-var x = document.getElementById("demo");
-
-
-function Point(lat, lon) {
-	this.lat = lat;
-	this.lon = lon;
-}
-
-// takes eight Point objects that represent stops/nodes on the Route
-function Route(one, two, three, four, five, six, seven, eight) {
-	this.one = one;
-	this.two = two;
-	this.three = three;
-	this.four = four;
-	this.five = five;
-	this.six = six;
-	this.seven = seven;
-	this.eight = eight;
-}
-
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(calculatePoints);
-    } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
-
-function calculatePoints(position) {
-	var userInput = document.getElementById('textBox').value;
-	radius = calculateRadius(userInput/65);
-	var one = new Point(position.coords.latitude, position.coords.longitude);
-	var two = new Point(one.lat + 0.08*radius, one.lon + 0.38*radius);
-	var three = new Point(one.lat + radius, one.lon + radius);
-	var four = new Point(one.lat + 1.92*radius, one.lon + 0.38*radius);
-	var five = new Point(one.lat + 2*radius, one.lon);
-	var six = new Point(one.lat + 1.92*radius, one.lon - 0.38*radius);
-	var seven = new Point(one.lat + radius, one.lon - radius);
-	var eight = new Point(one.lat + 0.08*radius, one.lon - 0.38*radius);
-	var link = composeLink(new Route(one, two, three, four, five, six, seven, eight));
-	window.location=link;
-   <!-- x.innerHTML = "<a href=" + link + ">Start Trip</a>";	-->
-}
+			<input type="text" name="enter" class="enter" style="text-align:center" value="" id="textBox"/>
+			<br /><br />
+			<button class="btn btn-info" onclick="getLocation()">Calculate Route</button>
+			<br/>
+			<p id="demo"></p>
+		</div>
+		<script>
+		var x = document.getElementById("demo");
 
 
+		function Point(lat, lon) {
+			this.lat = lat;
+			this.lon = lon;
+		}
 
-function composeLink(route) {
-	var link = "http://www.google.com/maps/dir/";
-	link = link + route.one.lat + "," + route.one.lon + "/";
-	link = link + route.two.lat + "," + route.two.lon + "/";
-	link = link + route.three.lat + "," + route.three.lon + "/";
-	link = link + route.four.lat + "," + route.four.lon + "/";
-	link = link + route.five.lat + "," + route.five.lon + "/";
-	link = link + route.six.lat + "," + route.six.lon + "/";
-	link = link + route.seven.lat + "," + route.seven.lon + "/";
-	link = link + route.eight.lat + "," + route.eight.lon + "/";
-	link = link + route.one.lat + "," + route.one.lon;
-	return link;
-}
+		// takes eight Point objects that represent stops/nodes on the Route
+		function Route(one, two, three, four, five, six, seven, eight) {
+			this.one = one;
+			this.two = two;
+			this.three = three;
+			this.four = four;
+			this.five = five;
+			this.six = six;
+			this.seven = seven;
+			this.eight = eight;
+		}
 
-function calculateRadius(circumference) {
-	var twoPi = 2.00 * 3.14;
-	return circumference/twoPi;
-}
+		function getLocation() {
+		    if (navigator.geolocation) {
+		        navigator.geolocation.getCurrentPosition(calculatePoints);
+		    } else { 
+		        x.innerHTML = "Geolocation is not supported by this browser.";
+		    }
+		}
 
-</script>
+		function calculatePoints(position) {
+			var userInput = document.getElementById('textBox').value;
+			radius = calculateRadius(userInput/65);
+			var one = new Point(position.coords.latitude, position.coords.longitude);
+			var two = new Point(one.lat + 0.08*radius, one.lon + 0.38*radius);
+			var three = new Point(one.lat + radius, one.lon + radius);
+			var four = new Point(one.lat + 1.92*radius, one.lon + 0.38*radius);
+			var five = new Point(one.lat + 2*radius, one.lon);
+			var six = new Point(one.lat + 1.92*radius, one.lon - 0.38*radius);
+			var seven = new Point(one.lat + radius, one.lon - radius);
+			var eight = new Point(one.lat + 0.08*radius, one.lon - 0.38*radius);
+			var link = composeLink(new Route(one, two, three, four, five, six, seven, eight));
+			window.location=link;
+		   <!-- x.innerHTML = "<a href=" + link + ">Start Trip</a>";	-->
+		}
 
-</body>
+
+
+		function composeLink(route) {
+			var link = "http://www.google.com/maps/dir/";
+			link = link + route.one.lat + "," + route.one.lon + "/";
+			link = link + route.two.lat + "," + route.two.lon + "/";
+			link = link + route.three.lat + "," + route.three.lon + "/";
+			link = link + route.four.lat + "," + route.four.lon + "/";
+			link = link + route.five.lat + "," + route.five.lon + "/";
+			link = link + route.six.lat + "," + route.six.lon + "/";
+			link = link + route.seven.lat + "," + route.seven.lon + "/";
+			link = link + route.eight.lat + "," + route.eight.lon + "/";
+			link = link + route.one.lat + "," + route.one.lon;
+			return link;
+		}
+
+		function calculateRadius(circumference) {
+			var twoPi = 2.00 * 3.14;
+			return circumference/twoPi;
+		}
+
+		</script>
+
+	</body>
 </html>
