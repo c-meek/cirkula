@@ -4,16 +4,16 @@
 		<link rel="stylesheet" href=" bootstrap/css/bootstrap.css">
 	</head>
 	<body>
-		<div class="container panel panel-default" style="text-align:center;margin:20px;background-color:#F8F8F8">
+		<div class="container panel panel-default " style="text-align:center;background-color:#F8F8F8;width:100%">
 			<!-- geolocation logic taken from http://www.w3schools.com/html/html5_geolocation.asp -->
 			<br/>
 			
 			<p style="font-size:50px;padding:30px;color:grey">Generate a circular route for your road trip. How many miles would you like to drive?</p>
 			<br/><br/><br/>
-			<div class="input-group input-group-lg col-xs-12" style="margin:auto">
+			<div class="input-group input-group-lg col-xs-12 col-sm-12 col-md-12" style="margin:auto">
 				<input type="text" name="enter" class="form-control" style="text-align:center;height:150px;font-size:75px" value="" id="textBox" placeholder="Miles"/>
 				
-				<button class="btn btn-info btn-lg col-xs-12" style="height:150px;font-size:75px;margin-top:50px" onclick="getLocation()">Route</button>
+				<button class="btn btn-info btn-lg col-xs-12 col-sm-12 col-md-12" style="height:150px;font-size:75px;margin-top:50px" onclick="getLocation()">Route</button>
 			</div>
 			<br/>
 			<p id="demo"></p>
